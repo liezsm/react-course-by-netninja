@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import BlogList from "./BlogList";
 const Home = () => {
@@ -24,6 +24,12 @@ const Home = () => {
     },
   ]);
 
+  const [name, setName] = useState("mario");
+  //   exp it takes a funtion as argument
+  //  exp it runs every rerenders or when a state/props/changes
+
+  useEffect(() => console.log("useeffect ran"), [name]);
+
   const handleDelete = (id) => {
     console.log(id);
     const updatedblogs = blogs.filter((blog) => blog.id !== id);
@@ -34,6 +40,9 @@ const Home = () => {
   return (
     <div className='home'>
       <h2>Homepage</h2>
+
+      <button onClick={() => setName("luigi")}>Change me</button>
+      <p>{name}</p>
       {/* <p>
         {" "}
         {name} is {age}{" "}
@@ -42,7 +51,7 @@ const Home = () => {
 
       <BlogList blogs={blogs} title='All blogs..' onDelete={handleDelete} />
       <BlogList
-        blogs={blogs.filter((blog) => blog.author == "mario")}
+        blogs={blogs.filter((blog) => blog.author === "mario")}
         title='Marios blogs..'
         onDelete={handleDelete}
       />
