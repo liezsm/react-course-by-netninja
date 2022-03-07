@@ -13,22 +13,20 @@ const Home = () => {
   //     setAge(40);
   //   };
 
-  const [blogs, setBlogs] = useState([
-    { title: "My new website", body: "lorem ipsum...", author: "mario", id: 1 },
-    { title: "Welcome party!", body: "lorem ipsum...", author: "sam", id: 2 },
-    {
-      title: "Web dev top tips",
-      body: "lorem ipsum...",
-      author: "mario",
-      id: 3,
-    },
-  ]);
+  const [blogs, setBlogs] = useState(null);
 
   const [name, setName] = useState("mario");
   //   exp it takes a funtion as argument
   //  exp it runs every rerenders or when a state/props/changes
 
-  useEffect(() => console.log("useeffect ran"), [name]);
+  useEffect(() => {
+    fetch("http://localhost:8000/blogs")
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        setBlogs(data);
+      });
+  }, []);
 
   const handleDelete = (id) => {
     console.log(id);
@@ -49,12 +47,15 @@ const Home = () => {
       </p>
       <button onClick={handleClick}>Click me</button> */}
 
-      <BlogList blogs={blogs} title='All blogs..' onDelete={handleDelete} />
-      <BlogList
+      {blogs && (
+        <BlogList blogs={blogs} title='All blogs..' onDelete={handleDelete} />
+      )}
+
+      {/* <BlogList
         blogs={blogs.filter((blog) => blog.author === "mario")}
         title='Marios blogs..'
         onDelete={handleDelete}
-      />
+      /> */}
     </div>
   );
 };
