@@ -14,18 +14,36 @@ const Home = () => {
   //   };
 
   const [blogs, setBlogs] = useState(null);
+  const [isPending, setIsPending] = useState(true);
+  const [error, setError] = useState(null);
 
   const [name, setName] = useState("mario");
   //   exp it takes a funtion as argument
   //  exp it runs every rerenders or when a state/props/changes
 
   useEffect(() => {
-    fetch("http://localhost:8000/blogs")
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-        setBlogs(data);
-      });
+    //   exp to simulate a loading time, we use setTimeout but in areal word scenario, we shouldn't do it
+    setTimeout(() => {
+      fetch("http://localhost:8000/blogs")
+        .then((res) => {
+          //   console.log(res)
+          if (!res.ok) {
+            throw Error("could not fetch the data for that resource");
+          }
+          return res.json();
+        })
+
+        .then((data) => {
+          // console.log(data);
+          setBlogs(data);
+          setIsPending(false);
+          setError(null);
+        })
+        .catch((err) => {
+          setError(err.message);
+          setIsPending(false);
+        });
+    }, 1000);
   }, []);
 
   const handleDelete = (id) => {
@@ -46,7 +64,8 @@ const Home = () => {
         {name} is {age}{" "}
       </p>
       <button onClick={handleClick}>Click me</button> */}
-
+      {error && <div> {error} </div>}
+      {isPending && <div> Loading....</div>}
       {blogs && (
         <BlogList blogs={blogs} title='All blogs..' onDelete={handleDelete} />
       )}
