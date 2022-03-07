@@ -1,12 +1,12 @@
 const Navbar = () => {
   // todo normal func
-  const handleClick = () => {
-    console.log("hello ninjas");
-  };
+  //   const handleClick = () => {
+  //     console.log("hello ninjas");
+  //   };
   //   todo when passing an argument
-  const handleClickagain = (name) => {
-    console.log(name);
-  };
+  //   const handleClickagain = (name) => {
+  //     console.log(name);
+  //   };
 
   return (
     <nav className='navbar'>
@@ -14,14 +14,7 @@ const Navbar = () => {
       <div className='links'>
         <a href='/'>Home</a>
         <a href='/create'>New blog</a>
-        <button onClick={handleClick}>Click me</button>
-        <button
-          onClick={() => {
-            handleClickagain("test");
-          }}
-        >
-          Click me!
-        </button>
+        <button>Click me</button>
       </div>
     </nav>
   );

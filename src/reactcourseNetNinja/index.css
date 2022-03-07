@@ -45,3 +45,7 @@ body {
   margin: 40px auto;
   padding: 20px;
 }
+
+button {
+  font-family: inherit;
+}
