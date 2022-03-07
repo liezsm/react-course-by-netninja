@@ -14,7 +14,7 @@ const Navbar = () => {
       <div className='links'>
         <a href='/'>Home</a>
         <a href='/create'>New blog</a>
-        <button>Click me</button>
+        {/* <button>Click me</button> */}
       </div>
     </nav>
   );

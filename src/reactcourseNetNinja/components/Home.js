@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import BlogList from "./BlogList";
 const Home = () => {
   // todo part: useState hook
   // exp value of useState can be array, obj, boolean, number, string
@@ -32,12 +33,7 @@ const Home = () => {
       </p>
       <button onClick={handleClick}>Click me</button> */}
 
-      {blogs.map((blog) => (
-        <div className='blog-preview' key={blog.id}>
-          <h2>{blog.title}</h2>
-          <p>Written by: {blog.author}</p>
-        </div>
-      ))}
+      <BlogList blogs={blogs} title='All blogs..' />
     </div>
   );
 };

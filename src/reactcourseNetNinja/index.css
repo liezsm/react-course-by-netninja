@@ -60,6 +60,7 @@ button {
 
 .blog-preview:hover {
   box-shadow: -10px 3px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .blog-preview h2 {
