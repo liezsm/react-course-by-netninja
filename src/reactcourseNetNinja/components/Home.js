@@ -15,7 +15,7 @@ const Home = () => {
 
   const [blogs, setBlogs] = useState([
     { title: "My new website", body: "lorem ipsum...", author: "mario", id: 1 },
-    { title: "Welcome party!", body: "lorem ipsum...", author: "mario", id: 2 },
+    { title: "Welcome party!", body: "lorem ipsum...", author: "sam", id: 2 },
     {
       title: "Web dev top tips",
       body: "lorem ipsum...",
@@ -23,6 +23,13 @@ const Home = () => {
       id: 3,
     },
   ]);
+
+  const handleDelete = (id) => {
+    console.log(id);
+    const updatedblogs = blogs.filter((blog) => blog.id !== id);
+    setBlogs(updatedblogs);
+    // console.log(updatedBlogs);
+  };
 
   return (
     <div className='home'>
@@ -33,7 +40,12 @@ const Home = () => {
       </p>
       <button onClick={handleClick}>Click me</button> */}
 
-      <BlogList blogs={blogs} title='All blogs..' />
+      <BlogList blogs={blogs} title='All blogs..' onDelete={handleDelete} />
+      <BlogList
+        blogs={blogs.filter((blog) => blog.author == "mario")}
+        title='Marios blogs..'
+        onDelete={handleDelete}
+      />
     </div>
   );
 };
