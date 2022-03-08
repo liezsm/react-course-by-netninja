@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
   // todo normal func
   //   const handleClick = () => {
@@ -12,8 +14,8 @@ const Navbar = () => {
     <nav className='navbar'>
       <h1>Dojo blog</h1>
       <div className='links'>
-        <a href='/'>Home</a>
-        <a href='/create'>New blog</a>
+        <Link to='/'>Home</Link>
+        <Link to='/create'>New blog</Link>
         {/* <button>Click me</button> */}
       </div>
     </nav>

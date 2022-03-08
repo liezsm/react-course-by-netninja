@@ -1,7 +1,9 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
+import Create from "./components/Create";
 
 const App = () => {
   //  const title = "Welcome to the new blog";
@@ -12,8 +14,9 @@ const App = () => {
   // const link = 'http://www.google.con';
 
   return (
-    <div className='App'>
-      {/* <div className="content">
+    <Router>
+      <div className='App'>
+        {/* <div className="content">
             <h1> { title } </h1>
             <p> Liked { likes } times</p>
             <p> { 'hello ninjas'}</p>
@@ -23,13 +26,23 @@ const App = () => {
            
         </div> */}
 
-      {/* //todo part: componsing multiple components */}
+        {/* //todo part: componsing multiple components */}
 
-      <Navbar />
-      <div className='content'>
-        <Home />
+        <Navbar />
+
+        <div className='content'>
+          <Switch>
+            <Route exact path='/'>
+              <Home />
+            </Route>
+
+            <Route path='/create'>
+              <Create />
+            </Route>
+          </Switch>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 };
 
