@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Create from "./components/Create";
 import BlogDetails from "./components/BlogDetails";
+import NotFound from "./components/NotFound";
 
 const App = () => {
   //  const title = "Welcome to the new blog";
@@ -43,6 +44,10 @@ const App = () => {
 
             <Route path='/blogs/:id'>
               <BlogDetails />
+            </Route>
+
+            <Route path='*'>
+              <NotFound />
             </Route>
           </Switch>
         </div>
